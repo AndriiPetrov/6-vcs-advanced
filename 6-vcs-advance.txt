@@ -1,0 +1,108 @@
+До початку завдання я виконав наступне:
+$ mkdir 6-vcs-advanced
+$ cd 6-vcs-advanced
+$ git init
+
+1. 
+//Команда $ git branch architecture - не може буди виконана, доки не буде зроблений перший коміт, тому виконуємо команду 
+$ git checkout -b architecture
+$ mkdir assets uploads
+$ touch index.html
+$ git add .
+$ git commit -m 'first commit in task1'
+$ touch assets/all.js assets/css.js
+$ git add .
+$ git commit -m 'second commit in task1'
+$ git remote add origin https://github.com/Bratok3000/6-vcs-advanced
+$ git push origin architecture		//тут створилася гілка architecture в відаленому репозиторії
+$ touch .gitignore
+$ notepad .gitignore // тут вписуємо папку для ігнорування
+$ git add .
+$ git commit -m 'third commit in task1'
+$ git push 		//добавляємо файл .gitignore в наш віддалений репозиторій
+$ git checkout -b master
+$ git merge architecture
+$ git branch -d architecture
+
+2.
+$ git branch rebase_task2
+$ notepad index.html		//тут міняв файл 1 раз
+$ git add .
+$ git commit -m 'first commit'
+$ notepad index.html		//тут міняв файл 2 раз
+$ git add index.html
+$ git commit  -m 'second commit'
+$ git checkout rebase_task2
+$ git rebase master
+$ notepad index.html //тут міняв файл 3 раз
+$ git add index.html
+$ git commit -m 'third commit'
+--------------//четвертий раз файл я міняв за допомогою visual studio code
+$ git add index.html
+$ git commit -m 'forth commit'
+$ git checkout master
+$ git merge rebase_task2
+$ git branch -d rebase_task2
+
+3.
+------------//відредагували файл 
+$ git add .
+$ git commit -m 'use tag span'
+$ git tag v1.1
+$ git push origin v1.1
+
+4.
+$ git submodule add https://github.com/Bratok3000/hello-world
+$ git commit --amend -m 'submodule'
+$ git push origin master
+
+5.
+$ git checkout -b gh-pages
+--------------//редагую файл
+$ git add index.html
+$ git commit -m 'somechanges'
+$ git push origin gh-pages
+--------------//редагую файл
+$ git add index.html
+$ git commit -m 'another change'
+$ git push origin gh-pages
+
+6.
+$ git checkout master
+$ touch file.txt
+-----------//редагуємо
+$ git add .
+$ git commit -m 'commit file.txt on master'
+$ git checkout -b branch
+-----------//редагуємо знову цей файл
+$ git add .
+$ git commit -m 'commit file.txt on branch'
+$ git merge branch				//тут пророблюємо merge і отримуємо конфлікт
+Auto-merging file.txt
+CONFLICT (add/add): Merge conflict in file.txt
+Automatic merge failed; fix conflicts and then commit the result.
+$ git merge --abort
+---------------------------------- після цього я проробив
+$ git checkout branch
+$ git add .
+$ git checkout master
+$ git add .
+$ git merge branch -- знову конфлікт
+$ git mergetool  		// виправив в графічному редакторі
+$ git status
+$ git commit -m 'resolve problem'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
